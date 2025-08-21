@@ -96,6 +96,15 @@ main {
     padding: 20px; /* možeš prilagoditi ako želiš više prostora */
   }
 }
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.3rem;  /* manja veličina za mobilne */
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+}
 /* Za WebKit browsere (Chrome, Edge, Safari) */
 .MainContent::-webkit-scrollbar {
   width: 8px;
