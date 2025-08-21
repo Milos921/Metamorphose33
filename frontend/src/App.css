@@ -1,0 +1,47 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 20px;
+}
+
+.center-content {
+  flex: 2;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .center-content {
+    order: 2;
+  }
+
+  .Sidebar {
+    order: 3;
+  }
+
+  .RightPanel {
+    order: 1;
+  }
+}
+/* Desktop stil */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/* Tablet i mobilni */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+}

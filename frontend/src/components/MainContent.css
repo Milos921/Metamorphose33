@@ -1,0 +1,184 @@
+.main-content {
+  margin-left: 280px; /* isto kao širina Sidebar-a */
+  margin-right: 60px; /* ako koristiš RightPanel */
+  padding: 40px;
+  margin-top: 40px;
+  overflow-y: auto;
+  height: calc(100vh - 80px); /* ispod Header-a */
+  background-color: transparent;
+  color: white;
+  z-index: 1;
+  position: relative;
+}
+
+
+section {
+  margin-bottom: 60px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+h1, h2, h3 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* Animacije */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUp 1.2s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.main-logo {
+  width: 80px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+  animation: rotateLogo 2s ease-in-out forwards;
+}
+
+@keyframes rotateLogo {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+main {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px; /* možeš prilagoditi ako želiš više prostora */
+  }
+}
+/* Za WebKit browsere (Chrome, Edge, Safari) */
+.MainContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.MainContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.MainContent::-webkit-scrollbar-thumb {
+  background-color: #90e0ef;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.MainContent::-webkit-scrollbar-thumb:hover {
+  background-color: #48cae4;
+}
+.main-content {
+  overflow-y: auto;
+  height: calc(100vh - 80px); /* ili neka druga visina */
+  scrollbar-width: thin;
+  scrollbar-color: #90e0ef transparent;
+
+}
+.modules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.module {
+  text-align: center;
+  background-color: #f9f9f921;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #90e0ef;; /* tamna siva za dobru čitljivost */
+}
+
+.module img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Animacija - fade in + slide up */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover efekat */
+.module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px #90e0ef;;
+}
+.module img:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+.contact-links a {
+  color: #00aaff; /* nebo plava nijansa */
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+  color: #0077cc; /* malo tamnija plava pri hoveru */
+}

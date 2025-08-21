@@ -1,0 +1,219 @@
+/* Glavni sidebar */
+.sidebar {
+  position: fixed;
+  top: 80px; /* visina Header-a */
+  left: 0;
+  width: 250px; /* prilagodi širinu po želji */
+  height: calc(100vh - 80px); /* da ne ide ispod Header-a */
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out;
+  scrollbar-width: thin;
+  scrollbar-color: #90e0ef transparent;
+  max-height: 100vh;
+}
+
+/* Scrollbar za WebKit (Chrome, Edge, Safari) */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #90e0ef;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #48cae4;
+}
+
+/* Sekcije unutar Sidebar-a */
+.sidebar-section {
+  margin-bottom: 30px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.sidebar-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.sidebar-section p,
+.sidebar-section ul,
+.sidebar-section li {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.sidebar-section a {
+  color: #90e0ef;
+  text-decoration: none;
+}
+
+.sidebar-section a:hover {
+  color: #0077cc; /* malo tamnija plava pri hoveru */
+  text-decoration: underline;
+}
+
+.sidebar-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-section li {
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Forma za zakazivanje i komentare */
+.sidebar-section form,
+.sidebar-section textarea,
+.sidebar-section input,
+.sidebar-section button {
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.booking-form label {
+  font-size: 13px;
+  margin-bottom: 2px;
+  display: block;
+  color: white;
+}
+
+.booking-form input,
+.sidebar-section textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.booking-form input::placeholder,
+.sidebar-section textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Dugmad */
+.booking-form button {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.booking-form button:hover {
+  background-color: #45a049;
+}
+
+button[type="submit"] {
+  background-color: #0077b6;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="submit"]:hover {
+  background-color: #023e8a;
+}
+
+/* Zvjezdice */
+.stars {
+  font-size: 20px;
+}
+
+.stars span {
+  font-size: 24px;
+  margin-right: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Dugme za zatvaranje */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* prikazuje se samo na mobilnim */
+}
+
+/* Error stilovi */
+input.error, textarea.error {
+  border: 2px solid #ff4d4f;
+  background-color: #fdecea;
+  color: #000;
+}
+
+/* Toast obavijesti */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  z-index: 2000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 1 !important;
+}
+
+.toast.success {
+  background-color: #4caf50;
+}
+
+.toast.error {
+  background-color: #f44336;
+}
+
+/* Responsivnost */
+
+/* Mobilna logika */
+@media (max-width: 768px) {
+  .close-btn {
+    display: block;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+    width: 230px;
+    height: 770px;
+    background-color: rgba(20, 20, 30, 0.95); /* tamna, elegantna, lagano prozirna */
+    backdrop-filter: blur(8px); /* daje dubinu i atmosferu */
+    top: 110px;
+  }
+
+  .sidebar.visible {
+    transform: translateX(0);
+  }
+
+  .sidebar-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .sidebar-section form,
+  .sidebar-section textarea,
+  .sidebar-section input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

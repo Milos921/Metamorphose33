@@ -1,0 +1,37 @@
+/* Reset osnovnih margina i fonta */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
+
+/* Glavni kontejner aplikacije */
+.app-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+  z-index: 1;
+}
+
+/* Layout koji drži Sidebar, MainContent i RightPanel */
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  height: calc(100vh - 80px); /* ako ti je header visok 80px */
+}
+
+/* Pozadinski video */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
