@@ -91,11 +91,41 @@ app.get('/comments', (req, res) => {
   }
 });
 
+// 🔹 GET /comments/average - Prosečna ocena
+app.get('/comments/average', (req, res) => {
+  const filePath = path.join(__dirname, 'comments.json');
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(200).json({ average: 0, count: 0 });
+  }
+
+  try {
+    const commentsData = fs.readFileSync(filePath);
+    const comments = JSON.parse(commentsData);
+
+    if (comments.length === 0) {
+      return res.status(200).json({ average: 0, count: 0 });
+    }
+
+    const total = comments.reduce((sum, c) => sum + Number(c.note), 0);
+    const average = total / comments.length;
+
+    res.status(200).json({ average, count: comments.length });
+  } catch (error) {
+    console.error('❌ Greška prilikom računanja prosečne ocene:', error);
+    res.status(500).json({ message: 'Greška prilikom računanja ocene.' });
+  }
+});
+
 // ⚠️ Ovo MORA biti POSLEDNJE - React frontend fallback (za React Router)
 app.get('*', (req, res) => {
-  res.sendFile(path.join(frontendPath, 'index.html'));
+  try {
+    res.sendFile(path.join(frontendPath, 'index.html'));
+  } catch (error) {
+    res.status(500).send('❌ React build nije pronađen.');
+  }
 });
 
 // 🔹 Pokreni server
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server pokrenut na http://localhost:${PORT}`));
