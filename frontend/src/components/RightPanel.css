@@ -1,10 +1,11 @@
 .RightPanel {
   width: 300px;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0); /* lagani overlay da se aurora vidi ispod */
+  background-color: rgba(187, 93, 93, 0); /* lagani overlay da se aurora vidi ispod */
   color: white;
   overflow-y: auto;
   z-index: 1;
+  margin-top: 60px;
   scrollbar-width: thin;
   scrollbar-color: #90e0ef transparent;
 }
@@ -47,7 +48,8 @@
 }
 @media (max-width: 600px) {
   .RightPanel h2 {
-    font-size: 1.1rem; /* manji naslov na mobilnim */
+    font-size: 1rem; /* manji naslov na mobilnim */
+    width: 80px; 
   }
 
   .RightPanel ul li {

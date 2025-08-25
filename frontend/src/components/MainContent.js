@@ -15,7 +15,20 @@ function MainContent() {
 
   return (
     <div className="main-content">
-      <img src="/logo1921.png" alt="Logo" className="main-logo" />
+      {/* Rotirajući logo */}
+      <div className="logo-container">
+        <div className="logo">
+          <div
+            className="front"
+            style={{ backgroundImage: "url(/logo1921.png)" }}
+          ></div>
+          <div
+            className="back"
+            style={{ backgroundImage: "url(/logo.drugastrana.png)" }}
+          ></div>
+        </div>
+      </div>
+
       <section className="intro-section fade-in">
         <h1>🌟 Qui suis-je ?</h1>
         <p>

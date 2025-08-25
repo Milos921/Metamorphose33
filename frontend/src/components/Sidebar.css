@@ -195,7 +195,7 @@ input.error, textarea.error {
   .sidebar {
     transform: translateX(-100%);
     width: 230px;
-    height: 770px;
+    height: 694px;
     background-color: rgba(20, 20, 30, 0.95); /* tamna, elegantna, lagano prozirna */
     backdrop-filter: blur(8px); /* daje dubinu i atmosferu */
     top: 110px;
@@ -215,5 +215,25 @@ input.error, textarea.error {
   .sidebar-section input {
     width: 100%;
     box-sizing: border-box;
+  }
+}
+@media (max-width: 480px) {
+  .sidebar {
+    width: 240px;  /* manja širina za male telefone */
+    height: 780px;
+  }
+  .main-content {
+    margin-left: 200px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sidebar {
+    width: 200px; /* još uži sidebar */
+    height: 600px;
+  }
+  .main-content {
+    margin-left: 160px;
   }
 }
