@@ -1,12 +1,18 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
 const path = require('path');
-const { sendMail } = require('./emailService'); // Funkcija za slanje maila
+const { sendMail } = require('./emailService');
+const { Pool } = require('pg');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// 🔹 Povezivanje sa Postgres bazom
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }, // Render zahteva SSL
+});
 
 // 🔹 Serve React frontend
 const frontendPath = path.join(__dirname, '../frontend/build');
@@ -41,15 +47,9 @@ app.post('/booking', async (req, res) => {
   }
 });
 
-// 🔹 POST /comment - Slanje komentara
+// 🔹 POST /comment - Slanje komentara (u bazu)
 app.post('/comment', async (req, res) => {
   const { note, commentaire } = req.body;
-
-  const newComment = {
-    note,
-    commentaire,
-    date: new Date().toISOString()
-  };
 
   const htmlContent = `
     <h2>Nouvel commentaire reçu</h2>
@@ -58,13 +58,14 @@ app.post('/comment', async (req, res) => {
   `;
 
   try {
+    // šalje email
     await sendMail('Nouvel avis client sur le site', htmlContent, null);
 
-    const filePath = path.join(__dirname, 'comments.json');
-    const existing = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath)) : [];
-
-    existing.push(newComment);
-    fs.writeFileSync(filePath, JSON.stringify(existing, null, 2));
+    // upisuje u bazu
+    await pool.query(
+      'INSERT INTO comments (note, commentaire, created_at) VALUES ($1, $2, NOW())',
+      [note, commentaire]
+    );
 
     res.status(200).send({ message: "Commentaire envoyé et sauvegardé avec succès !" });
   } catch (error) {
@@ -73,18 +74,11 @@ app.post('/comment', async (req, res) => {
   }
 });
 
-// 🔹 GET /comments - Dohvati sve komentare
-app.get('/comments', (req, res) => {
-  const filePath = path.join(__dirname, 'comments.json');
-
-  if (!fs.existsSync(filePath)) {
-    return res.status(200).json([]); // Nema komentara još
-  }
-
+// 🔹 GET /comments - Dohvati sve komentare iz baze
+app.get('/comments', async (req, res) => {
   try {
-    const commentsData = fs.readFileSync(filePath);
-    const comments = JSON.parse(commentsData);
-    res.status(200).json(comments);
+    const result = await pool.query('SELECT * FROM comments ORDER BY created_at DESC');
+    res.status(200).json(result.rows);
   } catch (error) {
     console.error('❌ Greška prilikom čitanja komentara:', error);
     res.status(500).json({ message: 'Greška prilikom učitavanja komentara.' });
@@ -92,25 +86,10 @@ app.get('/comments', (req, res) => {
 });
 
 // 🔹 GET /comments/average - Prosečna ocena
-app.get('/comments/average', (req, res) => {
-  const filePath = path.join(__dirname, 'comments.json');
-
-  if (!fs.existsSync(filePath)) {
-    return res.status(200).json({ average: 0, count: 0 });
-  }
-
+app.get('/comments/average', async (req, res) => {
   try {
-    const commentsData = fs.readFileSync(filePath);
-    const comments = JSON.parse(commentsData);
-
-    if (comments.length === 0) {
-      return res.status(200).json({ average: 0, count: 0 });
-    }
-
-    const total = comments.reduce((sum, c) => sum + Number(c.note), 0);
-    const average = total / comments.length;
-
-    res.status(200).json({ average, count: comments.length });
+    const result = await pool.query('SELECT AVG(note)::numeric(10,2) as average, COUNT(*) as count FROM comments');
+    res.status(200).json(result.rows[0]);
   } catch (error) {
     console.error('❌ Greška prilikom računanja prosečne ocene:', error);
     res.status(500).json({ message: 'Greška prilikom računanja ocene.' });
