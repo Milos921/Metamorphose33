@@ -186,7 +186,7 @@ input.error, textarea.error {
 
 /* Responsivnost */
 
-/* Mobilna logika */
+/* Tableti i svi manji uređaji */
 @media (max-width: 768px) {
   .close-btn {
     display: block;
@@ -196,8 +196,8 @@ input.error, textarea.error {
     transform: translateX(-100%);
     width: 230px;
     height: 694px;
-    background-color: rgba(20, 20, 30, 0.95); /* tamna, elegantna, lagano prozirna */
-    backdrop-filter: blur(8px); /* daje dubinu i atmosferu */
+    background-color: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(8px);
     top: 110px;
   }
 
@@ -217,10 +217,12 @@ input.error, textarea.error {
     box-sizing: border-box;
   }
 }
-@media (max-width: 480px) {
+
+/* Veliki telefoni (iPhone Pro Max, Plus ~430px širina) */
+@media (max-width: 430px) {
   .sidebar {
-    width: 240px;  /* manja širina za male telefone */
-    height: 780px;
+    width: 240px;
+    height: 770px;
   }
   .main-content {
     margin-left: 200px;
@@ -228,9 +230,21 @@ input.error, textarea.error {
   }
 }
 
+/* Srednji telefoni (iPhone 15 Pro, iPhone 16 ~393–402px širina) */
+@media (max-width: 402px) {
+  .sidebar {
+    width: 220px;
+    height: 720px;
+  }
+  .main-content {
+    margin-left: 180px;
+  }
+}
+
+/* Mali telefoni (stari Androidi, mini uređaji) */
 @media (max-width: 360px) {
   .sidebar {
-    width: 200px; /* još uži sidebar */
+    width: 200px;
     height: 600px;
   }
   .main-content {
