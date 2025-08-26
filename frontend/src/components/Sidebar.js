@@ -57,9 +57,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
     try {
       const response = await fetch('http://localhost:5000/booking', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
 
@@ -67,13 +65,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
 
       if (response.ok) {
         showToast('success', '✅ Demande envoyée avec succès !');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          date: '',
-          message: '',
-        });
+        setFormData({ name: '', email: '', phone: '', date: '', message: '' });
         setFieldErrors({});
       } else {
         showToast('error', '❌ Erreur: ' + result.message);
@@ -83,9 +75,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
     }
   };
 
-  // === KOMENTARI – NOVI DIO ===
-
-  // Učitaj sve komentare sa servera kad se otvori sidebar
+  // === KOMENTARI ===
   useEffect(() => {
     const fetchComments = async () => {
       try {
@@ -111,10 +101,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
       return;
     }
 
-    const newComment = {
-      commentaire: nouveauCommentaire,
-      note: note,
-    };
+    const newComment = { commentaire: nouveauCommentaire, note: note };
 
     try {
       const res = await fetch('http://localhost:5000/comment', {
@@ -124,7 +111,6 @@ const Sidebar = ({ visible, toggleSidebar }) => {
       });
 
       if (res.ok) {
-        // osveži listu komentara
         const updated = await fetch('http://localhost:5000/comments');
         const data = await updated.json();
         setCommentaires(data);
@@ -142,12 +128,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
 
   return (
     <div className={`sidebar ${visible ? 'visible' : ''}`}>
-      {/* Toast poruka */}
-      {toast.visible && (
-        <div className={`toast ${toast.type}`}>
-          {toast.message}
-        </div>
-      )}
+      {toast.visible && <div className={`toast ${toast.type}`}>{toast.message}</div>}
 
       <button className="close-btn" onClick={toggleSidebar}>×</button>
 
@@ -155,29 +136,21 @@ const Sidebar = ({ visible, toggleSidebar }) => {
       <div className="sidebar-section">
         <h3>📞 Contact</h3>
         <p>Bozovic Denis</p>
-        <p>
-          Email : <a href="mailto:bozovic.denis@gmail.com">bozovic.denis@gmail.com</a>
-        </p>
-        <p>
-          Téléphone : <a href="tel:+33780287560">+33 7 80 28 75 60</a>
-        </p>
-        <p>
-          Adresse :{" "}
-          <a
-            href="https://www.google.com/maps?q=49.09186252440633,6.180387061219499"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            2 Place du Souvenir Français, 57950 Montigny-lès-Metz
-          </a>
-        </p>
+        <p>Email : <a href="mailto:bozovic.denis@gmail.com">bozovic.denis@gmail.com</a></p>
+        <p>Téléphone : <a href="tel:+33780287560">+33 7 80 28 75 60</a></p>
+        <p>Adresse : <a href="https://www.google.com/maps?q=49.09186252440633,6.180387061219499" target="_blank" rel="noopener noreferrer">2 Place du Souvenir Français, 57950 Montigny-lès-Metz</a></p>
       </div>
 
       {/* Booking */}
       <div className="sidebar-section">
         <h3>📅 Prise de rendez-vous</h3>
         <form className="booking-form" onSubmit={handleBookingSubmit}>
-          {/* ... sve tvoje polja za booking ostaju isto ... */}
+          <input type="text" name="name" placeholder="Nom" value={formData.name} onChange={handleChange} className={fieldErrors.name ? 'error' : ''} />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className={fieldErrors.email ? 'error' : ''} />
+          <input type="tel" name="phone" placeholder="Téléphone" value={formData.phone} onChange={handleChange} className={fieldErrors.phone ? 'error' : ''} />
+          <input type="date" name="date" value={formData.date} onChange={handleChange} className={fieldErrors.date ? 'error' : ''} />
+          <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className={fieldErrors.message ? 'error' : ''} />
+          <button type="submit">Envoyer</button>
         </form>
       </div>
 
@@ -186,20 +159,8 @@ const Sidebar = ({ visible, toggleSidebar }) => {
         <h3>⭐ Évaluation</h3>
         <div className="stars">
           {[1, 2, 3, 4, 5].map((i) => (
-            <span
-              key={i}
-              onClick={() => setNote(i)}
-              onMouseEnter={() => setHoveredStar(i)}
-              onMouseLeave={() => setHoveredStar(0)}
-              style={{
-                cursor: 'pointer',
-                color: i <= (hoveredStar || note) ? '#ffd700' : '#ccc',
-                transition: 'color 0.2s',
-                fontSize: '24px'
-              }}
-            >
-              ★
-            </span>
+            <span key={i} onClick={() => setNote(i)} onMouseEnter={() => setHoveredStar(i)} onMouseLeave={() => setHoveredStar(0)}
+              style={{ cursor: 'pointer', color: i <= (hoveredStar || note) ? '#ffd700' : '#ccc', transition: 'color 0.2s', fontSize: '24px' }}>★</span>
           ))}
         </div>
       </div>
@@ -208,12 +169,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
       <div className="sidebar-section">
         <h3>💬 Commentaires</h3>
         <form onSubmit={handleCommentSubmit}>
-          <textarea
-            value={nouveauCommentaire}
-            onChange={(e) => setNouveauCommentaire(e.target.value)}
-            placeholder="Laissez votre avis ici..."
-            rows="3"
-          />
+          <textarea value={nouveauCommentaire} onChange={(e) => setNouveauCommentaire(e.target.value)} placeholder="Laissez votre avis ici..." rows="3" />
           <button type="submit">Publier</button>
         </form>
       </div>
