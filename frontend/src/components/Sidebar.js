@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 
+const BASE_URL = "https://metamorphose33-backend.onrender.com";
+
 const Sidebar = ({ visible, toggleSidebar }) => {
   const [commentaires, setCommentaires] = useState([]);
   const [nouveauCommentaire, setNouveauCommentaire] = useState('');
@@ -55,7 +57,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/booking', {
+      const response = await fetch(`${BASE_URL}/booking`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -79,7 +81,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await fetch('http://localhost:5000/comments');
+        const res = await fetch(`${BASE_URL}/comments`);
         const data = await res.json();
         setCommentaires(data);
       } catch (err) {
@@ -104,14 +106,14 @@ const Sidebar = ({ visible, toggleSidebar }) => {
     const newComment = { commentaire: nouveauCommentaire, note: note };
 
     try {
-      const res = await fetch('http://localhost:5000/comment', {
+      const res = await fetch(`${BASE_URL}/comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newComment),
       });
 
       if (res.ok) {
-        const updated = await fetch('http://localhost:5000/comments');
+        const updated = await fetch(`${BASE_URL}/comments`);
         const data = await updated.json();
         setCommentaires(data);
 
