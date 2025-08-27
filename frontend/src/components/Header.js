@@ -15,7 +15,7 @@ const Header = ({ toggleSidebar }) => {
     <header className="header">
       {isMobile && (
         <button className="menu-button" onClick={toggleSidebar}>
-          Prendre rendez-vous!
+          Réserve!
         </button>
       )}
       <h1 className="animated-title">METAMORPHOSE 33</h1>
