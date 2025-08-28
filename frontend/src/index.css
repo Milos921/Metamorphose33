@@ -35,3 +35,8 @@ body {
   object-fit: cover;
   z-index: -1;
 }
+@media (max-width: 768px) {
+  .background-video {
+    display: block; /* ne 'none' */
+  }
+}
