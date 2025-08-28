@@ -247,7 +247,27 @@ input.error, textarea.error {
 .booking-form .react-datepicker__triangle {
   display: none;
 }
+@media (max-width: 768px) {
+  .booking-form .react-datepicker-wrapper {
+    width: 90%;      /* smanjuje širinu boxa */
+    font-size: 0.9rem; /* manji font za mjesec/godinu i dane */
+  }
 
+  .booking-form .react-datepicker {
+    width: 100%;
+    padding: 6px;    /* smanjen padding unutar boxa */
+  }
+
+  .booking-form .react-datepicker__header {
+    padding: 6px 0;  /* manji header */
+    font-size: 0.9rem;
+  }
+
+  .booking-form .react-datepicker__day {
+    font-size: 0.8rem; /* manji dani */
+    padding: 4px;
+  }
+}
 
 
 @media (max-width: 768px) {
