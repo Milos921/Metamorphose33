@@ -68,7 +68,6 @@
   }
 }
 
-/* Mobilna logika */
 @media (max-width: 768px) {
   .animated-title {
     text-align: left;
@@ -92,7 +91,7 @@
   }
 }
 .menu-button {
-  background: #007acc;     /* plava nijansa */
+  background: #007acc36;
   color: white;
   border: none;
   padding: 10px 16px;

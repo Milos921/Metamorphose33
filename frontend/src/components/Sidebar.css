@@ -1,10 +1,9 @@
-/* Glavni sidebar */
 .sidebar {
   position: fixed;
-  top: 80px; /* visina Header-a */
+  top: 80px;
   left: 0;
-  width: 250px; /* prilagodi širinu po želji */
-  height: calc(100vh - 80px); /* da ne ide ispod Header-a */
+  width: 250px;
+  height: calc(100vh - 80px);
   color: white;
   padding: 20px;
   overflow-y: auto;
@@ -15,7 +14,6 @@
   max-height: 100vh;
 }
 
-/* Scrollbar za WebKit (Chrome, Edge, Safari) */
 .sidebar::-webkit-scrollbar {
   width: 8px;
 }
@@ -32,7 +30,6 @@
   background-color: #48cae4;
 }
 
-/* Sekcije unutar Sidebar-a */
 .sidebar-section {
   margin-bottom: 30px;
   padding-left: 0;
@@ -58,7 +55,7 @@
 }
 
 .sidebar-section a:hover {
-  color: #0077cc; /* malo tamnija plava pri hoveru */
+  color: #0077cc;
   text-decoration: underline;
 }
 
@@ -74,7 +71,6 @@
   border-radius: 4px;
 }
 
-/* Forma za zakazivanje i komentare */
 .sidebar-section form,
 .sidebar-section textarea,
 .sidebar-section input,
@@ -106,7 +102,6 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-/* Dugmad */
 .booking-form button {
   background-color: #4caf50;
   color: white;
@@ -129,7 +124,6 @@ button[type="submit"]:hover {
   background-color: #023e8a;
 }
 
-/* Zvjezdice */
 .stars {
   font-size: 20px;
 }
@@ -141,7 +135,6 @@ button[type="submit"]:hover {
   transition: color 0.2s ease-in-out;
 }
 
-/* Dugme za zatvaranje */
 .close-btn {
   position: absolute;
   top: 10px;
@@ -151,17 +144,15 @@ button[type="submit"]:hover {
   border: none;
   color: white;
   cursor: pointer;
-  display: none; /* prikazuje se samo na mobilnim */
+  display: none;
 }
 
-/* Error stilovi */
 input.error, textarea.error {
   border: 2px solid #ff4d4f;
   background-color: #fdecea;
   color: #000;
 }
 
-/* Toast obavijesti */
 .toast {
   position: fixed;
   bottom: 20px;
@@ -184,9 +175,6 @@ input.error, textarea.error {
   background-color: #f44336;
 }
 
-/* Responsivnost */
-
-/* Tableti i svi manji uređaji */
 @media (max-width: 768px) {
   .close-btn {
     display: block;
@@ -218,7 +206,6 @@ input.error, textarea.error {
   }
 }
 
-/* Veliki telefoni (iPhone Pro Max, Plus ~430px širina) */
 @media (max-width: 430px) {
   .sidebar {
     width: 260px;
@@ -230,7 +217,6 @@ input.error, textarea.error {
   }
 }
 
-/* Srednji telefoni (iPhone 15 Pro, iPhone 16 ~393–402px širina) */
 @media (max-width: 402px) {
   .sidebar {
     width: 240px;
@@ -241,7 +227,6 @@ input.error, textarea.error {
   }
 }
 
-/* Mali telefoni (stari Androidi, mini uređaji) */
 @media (max-width: 360px) {
   .sidebar {
     width: 220px;

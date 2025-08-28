@@ -65,12 +65,11 @@
   }
 }
 
-/* Mobile: dolje ispod main content-a */
 @media (max-width: 768px) {
   .RightPanel {
     width: 100%;
     margin: 20px 0 0 0;
     position: relative;
-    order: 3; /* ispod maina */
+    order: 3;
   }
 }

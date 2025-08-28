@@ -1,4 +1,3 @@
-/* Reset osnovnih margina i fonta */
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +6,6 @@ body {
   color: white;
 }
 
-/* Glavni kontejner aplikacije */
 .app-container {
   position: relative;
   display: flex;
@@ -17,15 +15,13 @@ body {
   z-index: 1;
 }
 
-/* Layout koji drži Sidebar, MainContent i RightPanel */
 .main-layout {
   display: flex;
   flex-direction: row;
   flex: 1;
-  height: calc(100vh - 80px); /* ako ti je header visok 80px */
+  height: calc(100vh - 80px);
 }
 
-/* Pozadinski video */
 .background-video {
   position: fixed;
   top: 0;
@@ -37,6 +33,6 @@ body {
 }
 @media (max-width: 768px) {
   .background-video {
-    display: block; /* ne 'none' */
+    display: block;
   }
 }
