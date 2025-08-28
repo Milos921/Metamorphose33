@@ -7,7 +7,7 @@ import './index.css';
 
 function App() {
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const videoRef = useRef(null); // dodat ref za video
+  const videoRef = useRef(null);
 
   const toggleSidebar = () => {
     setSidebarVisible(!sidebarVisible);
@@ -18,25 +18,33 @@ function App() {
     if (!video) return;
 
     // Pokušaj odmah autoplay
-    video.play().catch(err => console.log("Autoplay blocked, will retry:", err));
-
-    const handleScroll = () => {
-      const rect = video.getBoundingClientRect();
-      // Ako je video u viewport-u, pokušaj ponovo
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        video.play().catch(err => console.log("Retry autoplay blocked:", err));
-      }
+    const tryPlay = () => {
+      video.play().catch(err => console.log("Autoplay blocked:", err));
     };
 
-    window.addEventListener("scroll", handleScroll);
+    tryPlay();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Ako ne uspije, čekaj da korisnik klikne/tapne ekran
+    const handleUserInteraction = () => {
+      tryPlay();
+      // posle prvog klika ukloni listener
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
+    };
+
+    window.addEventListener("click", handleUserInteraction);
+    window.addEventListener("touchstart", handleUserInteraction);
+
+    return () => {
+      window.removeEventListener("click", handleUserInteraction);
+      window.removeEventListener("touchstart", handleUserInteraction);
+    };
   }, []);
 
   return (
     <div className="app-container">
       <video
-        ref={videoRef} // dodan ref
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -63,4 +71,3 @@ function App() {
 }
 
 export default App;
-
