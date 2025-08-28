@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BASE_URL = "https://metamorphose33-backend.onrender.com";
 
@@ -175,7 +177,15 @@ const Sidebar = ({ visible, toggleSidebar }) => {
           <input type="text" name="name" placeholder="Nom" value={formData.name} onChange={handleChange} className={fieldErrors.name ? 'error' : ''} />
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className={fieldErrors.email ? 'error' : ''} />
           <input type="tel" name="phone" placeholder="Téléphone" value={formData.phone} onChange={handleChange} className={fieldErrors.phone ? 'error' : ''} />
-          <input type="date" name="date" value={formData.date} onChange={handleChange} className={fieldErrors.date ? 'error' : ''} />
+            <DatePicker
+              selected={formData.date ? new Date(formData.date) : null}
+              onChange={(date) =>
+              setFormData({ ...formData, date: date.toISOString().split("T")[0] })
+            }
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Sélectionner une date"
+            className={fieldErrors.date ? "error" : ""}
+           />
           <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className={fieldErrors.message ? 'error' : ''} />
           <button type="submit">Envoyer</button>
         </form>
