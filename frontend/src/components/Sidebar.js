@@ -138,7 +138,9 @@ const Sidebar = ({ visible, toggleSidebar }) => {
 {/* Kontakt */}
 <div className="sidebar-section">
   <h3>📞 Contact</h3>
-  
+
+  <p><strong>Denis Bozovic</strong></p> 
+
   <p>Email : 
     <a href="mailto:bozovic.denis@gmail.com" target="_blank" rel="noopener noreferrer">
       bozovic.denis@gmail.com
