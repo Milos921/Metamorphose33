@@ -17,25 +17,28 @@ function App() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Pokušaj odmah autoplay
     const tryPlay = () => {
       video.play().catch(err => console.log("Autoplay blocked:", err));
     };
 
+    // odmah pri mount-u
     tryPlay();
 
-    // Ako ne uspije, čekaj da korisnik klikne/tapne ekran
+    // retry par puta na početku
+    const retries = [500, 1500, 3000];
+    const timers = retries.map(delay => setTimeout(tryPlay, delay));
+
+    // fallback – ako ništa ne uspije, čekaj klik/tap
     const handleUserInteraction = () => {
       tryPlay();
-      // posle prvog klika ukloni listener
       window.removeEventListener("click", handleUserInteraction);
       window.removeEventListener("touchstart", handleUserInteraction);
     };
-
     window.addEventListener("click", handleUserInteraction);
     window.addEventListener("touchstart", handleUserInteraction);
 
     return () => {
+      timers.forEach(t => clearTimeout(t));
       window.removeEventListener("click", handleUserInteraction);
       window.removeEventListener("touchstart", handleUserInteraction);
     };
