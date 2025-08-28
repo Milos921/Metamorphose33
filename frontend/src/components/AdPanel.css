@@ -1,0 +1,59 @@
+.ad-panel {
+  position: fixed;
+  top: 80px;          /* ispod header-a */
+  right: 20px;
+  width: 300px;
+  max-height: 80vh;   /* nikad ne prelazi 80% visine ekrana */
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.078); /* lagani overlay, možeš promijeniti */
+  border-radius: 12px;
+  overflow-y: auto;
+  z-index: 1000;
+  color: white;
+  text-align: center;
+}
+
+.ad-panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #00aaff;
+}
+
+.ad-panel img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Scrollbar */
+.ad-panel::-webkit-scrollbar {
+  width: 8px;
+}
+.ad-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ad-panel::-webkit-scrollbar-thumb {
+  background-color: #90e0ef;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.ad-panel::-webkit-scrollbar-thumb:hover {
+  background-color: #48cae4;
+}
+
+/* Mobilna prilagodba */
+@media (max-width: 768px) {
+  .ad-panel {
+    position: relative;   /* više nije fiksiran */
+    top: auto;
+    right: auto;
+    width: 90%;           /* skoro cijeli ekran */
+    max-width: 350px;
+    margin: 20px auto;    /* centrirano */
+    padding: 10px;
+    max-height: none;
+    border-radius: 10px;
+  }
+}
