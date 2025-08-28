@@ -1,0 +1,33 @@
+.RightPanel {
+  position: fixed;
+  top: 80px; /* ispod header-a */
+  right: 20px;
+  width: 300px;
+  max-height: 80vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 15px;
+  border-radius: 12px;
+  color: white;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.RightPanel h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #00aaff;
+}
+
+/* Mobilno */
+@media (max-width: 768px) {
+  .RightPanel {
+    position: relative;
+    width: 100%;
+    top: auto;
+    right: auto;
+    max-height: none;
+    margin: 10px 0;
+  }
+}

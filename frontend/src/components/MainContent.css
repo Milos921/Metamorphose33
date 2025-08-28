@@ -1,6 +1,5 @@
 .main-content {
   margin-left: 280px; /* isto kao širina Sidebar-a */
-  margin-right: 60px; /* ako koristiš RightPanel */
   padding: 40px;
   margin-top: 40px;
   overflow-y: auto;
@@ -128,8 +127,8 @@ main {
 /* 📱 Responsive */
 @media (max-width: 900px) {
   .logo-container {
-    width: 250px;
-    height: 250px;
+    width: 350px;
+    height: 350px;
   }
   .front {
     background-size: 70%;
@@ -167,6 +166,27 @@ main {
     font-size: 1.1rem;
   }
 }
+@media only screen and (max-width: 480px) {
+  .logo-container {
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;          /* centriranje parenta */
+    display: flex;            /* omogućava flex centriranje */
+    justify-content: center;  /* horizontalno centriranje */
+    align-items: center;      /* vertikalno centriranje */
+  }
+
+  .logo {
+    width: 100%;  /* zauzima punu širinu logo-container */
+    height: 100%;
+    display: block;  
+  }
+
+  .header-logo-container {
+    justify-content: center;
+  }
+}
+
 /* Za WebKit browsere (Chrome, Edge, Safari) */
 .MainContent::-webkit-scrollbar {
   width: 8px;

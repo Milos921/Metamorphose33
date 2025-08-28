@@ -1,14 +1,15 @@
-import React from "react";
-import "./AdPanel.css";
+import React from 'react';
+import './AdPanel.css';
 
-export default function AdPanel() {
+function AdPanel(props) {
   return (
-    <div className="ad-panel">
-      <h2>Publicité</h2>
-      <img src="/ad1.jpg" alt="Reklama 1" />
-      <img src="/ad2.jpg" alt="Reklama 2" />
-      <img src="/ad3.jpg" alt="Reklama 3" />
-      {/* Dodaj još reklama po potrebi */}
+    <div className={`ad-panel ${props.className || ''}`}>
+      <h2>NOS AMIS</h2>
+      <div className="ad-box">
+        <img src="/homeworkX.jpg" alt="Reklama" />
+      </div>
     </div>
   );
 }
+
+export default AdPanel;

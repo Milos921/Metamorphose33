@@ -135,13 +135,36 @@ const Sidebar = ({ visible, toggleSidebar }) => {
       <button className="close-btn" onClick={toggleSidebar}>×</button>
 
       {/* Kontakt */}
-      <div className="sidebar-section">
-        <h3>📞 Contact</h3>
-        <p>Bozovic Denis</p>
-        <p>Email : <a href="mailto:bozovic.denis@gmail.com">bozovic.denis@gmail.com</a></p>
-        <p>Téléphone : <a href="tel:+33780287560">+33 7 80 28 75 60</a></p>
-        <p>Adresse : <a href="https://www.google.com/maps?q=49.09186252440633,6.180387061219499" target="_blank" rel="noopener noreferrer">2 Place du Souvenir Français, 57950 Montigny-lès-Metz</a></p>
-      </div>
+{/* Kontakt */}
+<div className="sidebar-section">
+  <h3>📞 Contact</h3>
+  
+  <p>Email : 
+    <a href="mailto:bozovic.denis@gmail.com" target="_blank" rel="noopener noreferrer">
+      bozovic.denis@gmail.com
+    </a>
+  </p>
+
+  <p>Téléphone : 
+    <a href="tel:+33780287560">
+      +33 7 80 28 75 60
+    </a>
+  </p>
+
+  <p>Adresse : 
+    <a href="https://www.google.com/maps?q=49.09186252440633,6.180387061219499" target="_blank" rel="noopener noreferrer">
+      2 Place du Souvenir Français, 57950 Montigny-lès-Metz
+    </a>
+  </p>
+
+  <p>Facebook : 
+    <a href="https://www.facebook.com/profile.php?id=61579445481110" target="_blank" rel="noopener noreferrer">
+      Métamorphose trente-trois
+    </a>
+  </p>
+</div>
+
+
 
       {/* Booking */}
       <div className="sidebar-section">

@@ -28,7 +28,7 @@ function App() {
 
       <div className="main-layout">
         <MainContent />
-        <AdPanel />
+        <AdPanel className="right-ad-panel" />
       </div>
     </div>
   );
