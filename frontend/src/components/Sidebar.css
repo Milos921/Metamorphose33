@@ -198,6 +198,21 @@ input.error, textarea.error {
 .booking-form .react-datepicker__day:hover {
   background-color: #e0e0e0;
 }
+.react-datepicker__current-month {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #004aad;
+}
+.react-datepicker__navigation {
+  top: 8px;
+  line-height: 1.5rem;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  color: #004aad;
+  cursor: pointer;
+}
+
 
 @media (max-width: 768px) {
   .close-btn {

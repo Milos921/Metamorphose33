@@ -182,10 +182,28 @@ const Sidebar = ({ visible, toggleSidebar }) => {
               onChange={(date) =>
               setFormData({ ...formData, date: date.toISOString().split("T")[0] })
             }
-            dateFormat="dd/MM/yyyy"
-            placeholderText="Sélectionner une date"
-            className={fieldErrors.date ? "error" : ""}
-           />
+              dateFormat="dd/MM/yyyy"
+              placeholderText="Sélectionner une date"
+              className={fieldErrors.date ? "error" : ""}
+              renderCustomHeader={({
+              date,
+              changeYear,
+              changeMonth,
+              decreaseMonth,
+              increaseMonth,
+              prevMonthButtonDisabled,
+              nextMonthButtonDisabled
+            }) => (
+              <div style={{ margin: 10, display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <button onClick={decreaseMonth} disabled={prevMonthButtonDisabled}>{"<"}</button>
+              <span style={{ margin: "0 10px", fontWeight: "bold" }}>
+              {date.toLocaleString("default", { month: "long" })} {date.getFullYear()}
+              </span>
+              <button onClick={increaseMonth} disabled={nextMonthButtonDisabled}>{">"}</button>
+              </div>
+            )}
+          />
+
           <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className={fieldErrors.message ? 'error' : ''} />
           <button type="submit">Envoyer</button>
         </form>
