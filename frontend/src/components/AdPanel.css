@@ -41,37 +41,31 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .ad-panel {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        margin-left: 0;
-        border-radius: 0;
-        padding: 10px;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, .2);
-        background-color: rgba(0,0,0,0.8);
-        z-index: 1000;
-    }
+/* Ako main-layout koristi flex */
+.main-layout {
+  flex-direction: column;
 }
 
+.center-content {
+  order: 1; /* glavni sadržaj ide prvi */
+}
 
-  .ad-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  }
-  /* Ako main-layout koristi flex */
-  .main-layout {
-    flex-direction: column;
-  }
+.right-ad-panel {
+  order: 2; /* reklame idu ispod maina */
+}
 
-  .center-content {
-    order: 1; /* glavni sadržaj ide prvi */
-  }
-
-  .right-ad-panel {
-    order: 2; /* reklame idu ispod maina */
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .ad-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-left: 0;
+    border-radius: 0;
+    padding: 10px;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, .2);
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
   }
 }
