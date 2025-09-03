@@ -50,22 +50,3 @@
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
-
-@media (max-width: 768px) {
-  .main-layout {
-    display: flex;
-    flex-direction: column;   /* main gore, ad dole */
-    min-height: 100vh;        /* barem visina ekrana */
-  }
-
-  .right-ad-panel {
-    position: static;         /* normalni flow, ne sticky/fixed */
-    width: 100%;
-    margin-top: 20px;         /* razmak od main-a */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.192);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-}
-
