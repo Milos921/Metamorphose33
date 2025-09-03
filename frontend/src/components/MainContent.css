@@ -330,9 +330,9 @@ main {
   .ad-panel.mobile-only {
     position: relative; /* deo toka stranice */
     width: 100%;
-    max-height: 120px;
+    max-height: 70px;
     padding: 10px 0;
-    margin-top: 20px; /* razmak od prethodnog sadržaja */
+    margin: 2px; /* razmak od prethodnog sadržaja */
     border-radius: 0;
     background-color: rgba(0,0,0,0.8);
     box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
