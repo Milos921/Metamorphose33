@@ -93,9 +93,9 @@ function MainContent() {
         <p>🆔 SIRET : 988 995 825 00011</p>
         <p>🔨 Avec MÉTAMORPHOSE 33, redonnez vie à vos espaces avec exigence, goût et professionnalisme.</p>
       </section>
-      <div className="mobile-ad-wrapper">
-        <AdPanel />
-      </div>
+        <div className="mobile-ad-wrapper">
+          <AdPanel className="mobile-only" />
+        </div>
     </div>
   );
 }

@@ -273,28 +273,64 @@ main {
   display: none;
 }
 
-/* Mobile ad fixed at bottom */
+/* Desktop ad */
+.ad-panel.desktop-only {
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  margin-left: 20px;
+  position: sticky;
+  top: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.078);
+}
+
+.ad-panel h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #90e0ef;
+}
+
+.ad-box {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-color: #2222223d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ad-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.ad-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
-  .mobile-ad-wrapper {
+  .ad-panel.desktop-only {
+    display: none; /* sakri desktop ad na mobilnim */
+  }
+
+  .ad-panel.mobile-only {
     display: block;
-    position: fixed;       /* fiksirano na dnu ekrana */
-    bottom: 0;
-    left: 0;
+    position: static; /* normalno u toku stranice */
     width: 100%;
-    z-index: 1000;
-  }
-
-  .mobile-ad-wrapper .ad-panel {
-    width: 100%;
-    max-height: 120px;     /* visina reklame */
-    padding: 10px;
+    max-height: none;
+    padding: 10px 0;
+    margin-top: 20px; /* razmak od sadržaja */
     border-radius: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Spacing za main content da se ne preklapa sa fiksnom reklamom */
-  .main-content {
-    padding-bottom: 140px; /* malo više od visine reklame */
+    background-color: rgba(0,0,0,0.8);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
   }
 }
