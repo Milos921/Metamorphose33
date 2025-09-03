@@ -8,6 +8,7 @@
   top: 100px; /* ostaje fiksirano dok scrolla */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.078);
+  box-sizing: border-box;
 }
 
 .ad-panel h2 {
@@ -19,7 +20,7 @@
 
 .ad-box {
   width: 100%;
-  aspect-ratio: 1/1; /* ovo pravi kvadrat */
+  aspect-ratio: 1/1;
   background-color: #2222223d;
   display: flex;
   align-items: center;
@@ -35,7 +36,6 @@
   object-fit: cover;
 }
 
-/* Hover efekat */
 .ad-box:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
@@ -54,18 +54,26 @@
   order: 2; /* reklame idu ispod maina */
 }
 
-/* Mobile responsive */
 @media (max-width: 768px) {
+  .main-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;       /* zauzima cijeli ekran */
+    padding-bottom: 80px;    /* prostor za footer ad */
+    overflow-y: auto;        /* normalan scroll */
+  }
+
   .ad-panel {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    margin-left: 0;
-    border-radius: 0;
+    max-height: 80px;        /* visina reklame */
     padding: 10px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, .2);
     background-color: rgba(0,0,0,0.8);
     z-index: 1000;
+    border-radius: 0;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+    box-sizing: border-box;
   }
 }
