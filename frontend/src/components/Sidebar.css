@@ -1,3 +1,4 @@
+/* GENERAL SIDEBAR STYLING */
 .sidebar {
   position: fixed;
   top: 80px;
@@ -247,41 +248,45 @@ input.error, textarea.error {
 .booking-form .react-datepicker__triangle {
   display: none;
 }
+
+/* MOBILE STYLING */
 @media (max-width: 768px) {
   .booking-form .react-datepicker-wrapper {
-    width: 90%;      /* smanjuje širinu boxa */
-    font-size: 0.9rem; /* manji font za mjesec/godinu i dane */
+    width: 90%;      
+    font-size: 0.9rem;
   }
 
   .booking-form .react-datepicker {
     width: 100%;
-    padding: 6px;    /* smanjen padding unutar boxa */
+    padding: 6px;
   }
 
   .booking-form .react-datepicker__header {
-    padding: 6px 0;  /* manji header */
+    padding: 6px 0;  
     font-size: 0.9rem;
   }
 
   .booking-form .react-datepicker__day {
-    font-size: 0.8rem; /* manji dani */
+    font-size: 0.8rem; 
     padding: 4px;
   }
-}
 
-
-@media (max-width: 768px) {
   .close-btn {
     display: block;
   }
 
   .sidebar {
     transform: translateX(-100%);
-    width: 250px;
-    height: 694px;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
     background-color: rgba(20, 20, 30, 0.95);
     backdrop-filter: blur(8px);
-    top: 110px;
+    top: 0;
+    padding-top: 20px;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1000;
   }
 
   .sidebar.visible {
@@ -299,35 +304,21 @@ input.error, textarea.error {
     width: 100%;
     box-sizing: border-box;
   }
-}
 
-@media (max-width: 430px) {
-  .sidebar {
-    width: 260px;
-    height: 770px;
-  }
   .main-content {
-    margin-left: 200px;
+    margin-left: 0;
     padding: 10px;
   }
 }
 
-@media (max-width: 402px) {
+@media (max-width: 430px) {
   .sidebar {
-    width: 240px;
-    height: 720px;
-  }
-  .main-content {
-    margin-left: 180px;
+    width: 90%;
   }
 }
 
 @media (max-width: 360px) {
   .sidebar {
-    width: 220px;
-    height: 600px;
-  }
-  .main-content {
-    margin-left: 160px;
+    width: 95%;
   }
 }
