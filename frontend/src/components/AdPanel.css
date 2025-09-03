@@ -43,16 +43,20 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-  .ad-panel {
-    width: 100%;
-    padding: 0px;
-    margin-left: 0;
-    margin-top: 20px;
-    align-items: center; /* centriranje sadržaja horizontalno */
-    position: relative; /* više nije sticky */
-    top: auto;
-    order: 2; /* stavlja panel ispod maina */
-  }
+    .ad-panel {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin-left: 0;
+        border-radius: 0;
+        padding: 10px;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, .2);
+        background-color: rgba(0,0,0,0.8);
+        z-index: 1000;
+    }
+}
+
 
   .ad-box:hover {
     transform: scale(1.05);
