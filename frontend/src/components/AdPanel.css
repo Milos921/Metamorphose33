@@ -1,17 +1,27 @@
-.ad-panel {
-  width: 300px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0);
-  color: white;
-  margin-left: 20px;
-  position: sticky;
-  top: 100px; /* ostaje fiksirano dok scrolla */
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.078);
-  box-sizing: border-box;
+/* Desktop: ad-panel desno */
+.main-layout {
+  display: flex;
+  flex-direction: row; /* default, main levo, ad desno */
 }
 
-.ad-panel h2 {
+.center-content {
+  order: 1; /* glavni sadržaj ide prvi */
+  flex: 1;  /* zauzima preostali prostor */
+}
+
+.right-ad-panel {
+  order: 2; /* reklama ide desno */
+  width: 300px;
+  padding: 20px;
+  background-color: rgba(0,0,0,0);
+  color: white;
+  position: sticky;
+  top: 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.078);
+}
+
+.right-ad-panel h2 {
   font-size: 1.3rem;
   margin-bottom: 15px;
   text-align: center;
@@ -41,39 +51,19 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Ako main-layout koristi flex */
-.main-layout {
-  flex-direction: column;
-}
-
-.center-content {
-  order: 1; /* glavni sadržaj ide prvi */
-}
-
-.right-ad-panel {
-  order: 2; /* reklame idu ispod maina */
-}
-
+/* Mobile: ad-panel ispod main */
 @media (max-width: 768px) {
   .main-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;       /* zauzima cijeli ekran */
-    padding-bottom: 80px;    /* prostor za footer ad */
-    overflow-y: auto;        /* normalan scroll */
+    flex-direction: column;  /* main gore, ad dole */
   }
 
-  .ad-panel {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  .right-ad-panel {
+    position: static;        /* normalni flow */
     width: 100%;
-    max-height: 80px;        /* visina reklame */
+    margin: 10px 0 0 0;      /* razmak od main-a */
     padding: 10px;
     background-color: rgba(0,0,0,0.8);
-    z-index: 1000;
-    border-radius: 0;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
-    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 }
