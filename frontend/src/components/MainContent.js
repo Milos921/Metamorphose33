@@ -1,5 +1,6 @@
 import React from 'react';
 import './MainContent.css';
+import AdPanel from './AdPanel';
 
 function AddressLink({ address }) {
   const mapsUrl = `https://www.google.com/maps?q=49.09186252440633,6.180387061219499`;
@@ -92,6 +93,9 @@ function MainContent() {
         <p>🆔 SIRET : 988 995 825 00011</p>
         <p>🔨 Avec MÉTAMORPHOSE 33, redonnez vie à vos espaces avec exigence, goût et professionnalisme.</p>
       </section>
+      <div className="mobile-ad-wrapper">
+        <AdPanel />
+      </div>
     </div>
   );
 }

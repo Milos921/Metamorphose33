@@ -268,3 +268,34 @@ main {
   text-decoration: underline;
   color: #0077cc;
 }
+/* Skriveno po defaultu */
+.mobile-ad-wrapper {
+  display: none;
+}
+
+/* Mobile ad fixed at bottom */
+@media (max-width: 768px) {
+  .mobile-ad-wrapper {
+    display: block;
+    position: fixed; /* fiksirano na ekranu */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+  .mobile-ad-wrapper .ad-panel {
+    width: 100%;
+    max-height: 120px;       /* visina reklame */
+    padding: 10px;
+    border-radius: 0;
+    background-color: rgba(0,0,0,0.8);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+  }
+
+  /* Dodatni padding za main-content da ne bude prekriven */
+  .main-content {
+    padding-bottom: 140px; /* malo više od visine reklame */
+  }
+}
+
