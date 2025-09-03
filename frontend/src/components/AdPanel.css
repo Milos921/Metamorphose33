@@ -51,19 +51,21 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Mobile: ad-panel ispod main */
 @media (max-width: 768px) {
   .main-layout {
-    flex-direction: column;  /* main gore, ad dole */
+    display: flex;
+    flex-direction: column;   /* main gore, ad dole */
+    min-height: 100vh;        /* barem visina ekrana */
   }
 
   .right-ad-panel {
-    position: static;        /* normalni flow */
+    position: static;         /* normalni flow, ne sticky/fixed */
     width: 100%;
-    margin: 10px 0 0 0;      /* razmak od main-a */
+    margin-top: 20px;         /* razmak od main-a */
     padding: 10px;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0, 0, 0, 0.192);
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 }
+
