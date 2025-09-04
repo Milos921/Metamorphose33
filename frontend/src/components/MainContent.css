@@ -323,22 +323,21 @@ main {
 
   .mobile-ad-wrapper {
     display: block;
-    position: relative; /* unutar toka stranice */
+    position: relative;
     width: 100%;
   }
 
   .ad-panel.mobile-only {
-    position: relative; /* deo toka stranice */
+    position: relative;
     width: 100%;
     max-height: 70px;
     padding: 10px 0;
-    margin: 2px; /* razmak od prethodnog sadržaja */
+    margin: 2px;
     border-radius: 0;
     background-color: rgba(0, 0, 0, 0.155);
     box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
   }
 
-  /* Dodatni prostor da ad ne preklapa sadržaj */
   .main-content {
     padding-bottom: 140px;
   }

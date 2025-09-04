@@ -1,4 +1,3 @@
-/* GENERAL SIDEBAR STYLING */
 .sidebar {
   position: fixed;
   top: 80px;
@@ -176,7 +175,6 @@ input.error, textarea.error {
   background-color: #f44336;
 }
 
-/* React DatePicker wrapper */
 .booking-form .react-datepicker-wrapper {
   width: 100%;
 }
@@ -190,7 +188,6 @@ input.error, textarea.error {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* Header mjesec/godina */
 .booking-form .react-datepicker__header {
   background-color: #004aad;
   color: white;
@@ -202,7 +199,6 @@ input.error, textarea.error {
   font-size: 1rem;
 }
 
-/* Trenutni mjesec i godina */
 .booking-form .react-datepicker__current-month {
   font-weight: bold;
   font-size: 1rem;
@@ -210,7 +206,6 @@ input.error, textarea.error {
   margin: 0 10px;
 }
 
-/* Navigacione strelice */
 .booking-form .react-datepicker__navigation {
   top: 50%;
   transform: translateY(-50%);
@@ -229,7 +224,6 @@ input.error, textarea.error {
   right: 10px;
 }
 
-/* Dani */
 .booking-form .react-datepicker__day {
   color: white;
 }
@@ -244,12 +238,10 @@ input.error, textarea.error {
   color: black;
 }
 
-/* Footer (ako ga koristiš) */
 .booking-form .react-datepicker__triangle {
   display: none;
 }
 
-/* MOBILE STYLING */
 @media (max-width: 768px) {
   .booking-form .react-datepicker-wrapper {
     width: 90%;      
@@ -279,7 +271,8 @@ input.error, textarea.error {
     transform: translateX(-100%);
     width: 80%;
     max-width: 300px;
-    height: 100vh;
+    max-height: 90vh;
+    margin-top: 60px;
     background-color: rgba(20, 20, 30, 0.95);
     backdrop-filter: blur(8px);
     top: 0;

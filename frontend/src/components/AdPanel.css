@@ -1,16 +1,15 @@
-/* Desktop: ad-panel desno */
 .main-layout {
   display: flex;
-  flex-direction: row; /* default, main levo, ad desno */
+  flex-direction: row;
 }
 
 .center-content {
-  order: 1; /* glavni sadržaj ide prvi */
-  flex: 1;  /* zauzima preostali prostor */
+  order: 1;
+  flex: 1;
 }
 
 .right-ad-panel {
-  order: 2; /* reklama ide desno */
+  order: 2;
   width: 300px;
   padding: 20px;
   background-color: rgba(0,0,0,0);
@@ -52,6 +51,6 @@
 }
 @media (max-width: 768px) {
   .ad-panel.desktop-only {
-    display: none; /* sakri na mobilnim */
+    display: none;
   }
 }

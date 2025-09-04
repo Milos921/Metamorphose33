@@ -8,22 +8,18 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔹 Povezivanje sa Postgres bazom
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }, // Render zahteva SSL
+  ssl: { rejectUnauthorized: false },
 });
 
-// 🔹 Serve React frontend
 const frontendPath = path.join(__dirname, '../frontend/build');
 app.use(express.static(frontendPath));
 
-// 🔹 API ruta za test
 app.get('/api', (req, res) => {
   res.send('✅ Backend radi!');
 });
 
-// 🔹 POST /booking - Zakazivanje krečenja
 app.post('/booking', async (req, res) => {
   const { name, email, phone, date, message } = req.body;
 
@@ -47,7 +43,6 @@ app.post('/booking', async (req, res) => {
   }
 });
 
-// 🔹 POST /comment - Slanje komentara (u bazu)
 app.post('/comment', async (req, res) => {
   const { note, commentaire } = req.body;
 
@@ -58,10 +53,8 @@ app.post('/comment', async (req, res) => {
   `;
 
   try {
-    // šalje email
     await sendMail('Nouvel avis client sur le site', htmlContent, null);
 
-    // upisuje u bazu
     await pool.query(
       'INSERT INTO comments (note, commentaire, created_at) VALUES ($1, $2, NOW())',
       [note, commentaire]
@@ -74,7 +67,6 @@ app.post('/comment', async (req, res) => {
   }
 });
 
-// 🔹 GET /comments - Dohvati sve komentare iz baze
 app.get('/comments', async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM comments ORDER BY created_at DESC');
@@ -85,7 +77,6 @@ app.get('/comments', async (req, res) => {
   }
 });
 
-// 🔹 GET /comments/average - Prosečna ocena
 app.get('/comments/average', async (req, res) => {
   try {
     const result = await pool.query('SELECT AVG(note)::numeric(10,2) as average, COUNT(*) as count FROM comments');
@@ -96,7 +87,6 @@ app.get('/comments/average', async (req, res) => {
   }
 });
 
-// ⚠️ Ovo MORA biti POSLEDNJE - React frontend fallback (za React Router)
 app.get('*', (req, res) => {
   try {
     res.sendFile(path.join(frontendPath, 'index.html'));

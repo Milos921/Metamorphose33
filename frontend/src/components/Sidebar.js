@@ -12,7 +12,6 @@ const Sidebar = ({ visible, toggleSidebar }) => {
   const [hoveredStar, setHoveredStar] = useState(0);
   const [fieldErrors, setFieldErrors] = useState({});
 
-  // Booking forma stanja
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -79,7 +78,6 @@ const Sidebar = ({ visible, toggleSidebar }) => {
     }
   };
 
-  // === KOMENTARI ===
   useEffect(() => {
     const fetchComments = async () => {
       try {
