@@ -175,6 +175,7 @@ const Sidebar = ({ visible, toggleSidebar }) => {
           <input type="text" name="name" placeholder="Nom" value={formData.name} onChange={handleChange} className={fieldErrors.name ? 'error' : ''} />
           <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className={fieldErrors.email ? 'error' : ''} />
           <input type="tel" name="phone" placeholder="Téléphone" value={formData.phone} onChange={handleChange} className={fieldErrors.phone ? 'error' : ''} />
+          <input type="adresse" name="adresse" placeholder="Adresse" value={formData.adresse} onChange={handleChange} className={fieldErrors.adresse ? 'error' : ''}/>
             <DatePicker
               selected={formData.date ? new Date(formData.date) : null}
               onChange={(date) =>
