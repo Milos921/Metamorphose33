@@ -6,7 +6,9 @@ function AdPanel(props) {
     <div className={`ad-panel desktop-only ${props.className || ''}`}>
       <h2>NOS AMIS</h2>
       <div className="ad-box">
-        <img src="/homeworkx.jpg" alt="Reklama" />
+        <a href="https://homeworx.lu/" target="_blank" rel="noopener noreferrer">
+          <img src="/homeworkx.jpg" alt="Reklama" />
+        </a>
       </div>
     </div>
   );
